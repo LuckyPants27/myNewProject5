@@ -74,5 +74,6 @@ public class Main {
         for (int j=2, i=1; i < 11; i++ ) {
             System.out.println(j + "*" + i + "=" + j*i);
         }
+
     }
 }
