@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -27,7 +29,7 @@ public class Main {
 
 
         System.out.println();
-        for (int i=1904; i < 2097; i++) {
+        for (int i=1904; i <= 2096; i++) {
             if (i%4 == 0) {
                 System.out.println(i + " год является високосным");
             }
@@ -35,29 +37,36 @@ public class Main {
 
 
         System.out.println();
-        for (int i= 7; i < 105; i+=7) {
+        for (int i= 7; i <= 98; i+=7) {
             System.out.print(i + " ");
         }
         System.out.println();
 
 
         System.out.println();
-        for (int i=1; i < 1024; i+=i) {
+        for (int i=1; i <= 512; i+=i) {
             System.out.print(i + " ");
         }
         System.out.println();
 
 
         System.out.println();
-        for (int i=29000, m=1; m < 13; i+=29000, m++ ) {
-            System.out.println("Месяц " + m + ", сумма накоплений равна " + i + " рублей");
+        int deposit = 29_000;
+        double sum = 0;
+        for (int month=1; month <= 12; month++ ) {
+            sum += deposit;
+            System.out.printf("Месяц %d, сумма накоплений равна %.2f рублей%n", month, sum);
         }
 
 
         System.out.println();
-        for (int i=29000, m=1; m < 13; i+=29000, m++ ) {
-            i += (i/100);
-            System.out.println("Месяц " + m + ", сумма накоплений равна " + i + " рублей");
+        sum = 0;
+        double percent = 1 / 100D;
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+        for (int month=1; month <= 12; month++ ) {
+            sum += sum * percent;
+            sum += deposit;
+            System.out.println("Месяц " + month + ", сумма накоплений равна рублей " + numberFormat.format(sum));
         }
 
 
